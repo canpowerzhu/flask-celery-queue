@@ -44,3 +44,8 @@
 ```shell
 celery -A tasks.task worker --loglevel=info -P threads
 ```
+
+2. 如何启用flower进行监控任务状态
+```shell
+celery -A tasks.task flower --address=0.0.0.0 --port=5555
+```

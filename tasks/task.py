@@ -15,5 +15,5 @@ cele = make_celery(create_app())
 @cele.task(name="celery_reverse_string-test")
 def reverse(do_string):
     with current_app.app_context():
-        time.sleep(10)
+        time.sleep(60)
         return do_string[::-1]
