@@ -19,6 +19,13 @@ def process(name):  # put application's code here
     return jsonify({'msg:': 'i send an asyn request', 'taskId': task.task_id})
 
 
+@task_bp.route('/schedule/<name>')
+def process_schedule(name):  # put application's code here
+    from tasks.task import reverse_schedule
+    task = reverse_schedule.delay(name)
+
+    return jsonify({'msg:': 'i send an asyn request', 'taskId': task.task_id})
+
 @task_bp.route('/task_status/<taskId>', methods=['GET'])
 def get_add(taskId):
     from tasks.task import reverse

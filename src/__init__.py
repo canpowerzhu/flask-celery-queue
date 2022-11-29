@@ -3,10 +3,12 @@ from flask import Flask
 from conf import config
 from src.views import task_bp
 from celery import Celery
+from tasks import cele_schedule
 
 def make_celery(app):
     cele = Celery(app.import_name, backend=config.CELERY_RESULT_BACKEND,
                   broker=config.BROKER_URL)
+    cele.config_from_object(cele_schedule)
     cele.conf.update(app.config)
     TaskBase = cele.Task
 
