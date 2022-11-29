@@ -49,3 +49,7 @@ celery -A tasks.task worker --loglevel=info -P threads
 ```shell
 celery -A tasks.task flower --address=0.0.0.0 --port=5555
 ```
+3. 启动Beat 用于crontab 来跑定时任务
+```shell
+ celery -A tasks.task beat --loglevel=info
+```
